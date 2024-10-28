@@ -1,0 +1,21 @@
+{
+    "appId": "com.4i-document-portal-app",
+    "files": [
+        "dist-electron",
+        "dist-ui"
+    ],
+    "icon": "./angular.png",
+    "mac": {
+        "target": "dmg"
+    },
+    "linux": {
+        "target": "AppImage",
+        "category": "Utility"
+    },
+    "win": {
+        "target": [
+            "portable",
+            "msi"
+        ]
+    }
+}

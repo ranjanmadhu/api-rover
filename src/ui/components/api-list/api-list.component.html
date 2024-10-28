@@ -1,0 +1,18 @@
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>API Documentation</span>
+</mat-toolbar>
+<div class="api-list-container">
+  <div class="api-list">
+    <mat-list role="list">
+      @for (item of specs; track item) {
+      <mat-list-item role="listitem" class="api-item" (click)="updateSelectedAPI(item)" > {{ item.info.title }}</mat-list-item>
+      }
+    </mat-list>
+  </div>
+  <div class="swagger-ui">
+    <app-swagger-ui [spec]="selectedSpec"></app-swagger-ui>
+  </div>
+</div>

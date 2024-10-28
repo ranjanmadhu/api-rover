@@ -1,1 +1,1 @@
-# api-rover
+# electron-angular-boilerplate

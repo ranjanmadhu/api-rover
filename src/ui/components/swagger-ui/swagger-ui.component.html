@@ -1,0 +1,19 @@
+<mat-tab-group class="swagger-ui-container">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">webhook</mat-icon>
+      <p class="label">Swagger</p>
+    </ng-template>
+    <div class="swagger-container">
+      <div #swaggerContainer></div>
+    </div>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">description</mat-icon>
+      <p class="label">JSON</p>
+    </ng-template>
+    <json-viewer [data]="spec"></json-viewer>
+  </mat-tab>
+</mat-tab-group>

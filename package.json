@@ -1,0 +1,53 @@
+{
+  "name": "document-portal-app",
+  "version": "0.0.1",
+  "description": "Document Portal for all your document needs",
+  "author": "Madhu Ranjan",
+  "license": "ISC",
+  "main": "dist-electron/main.js",
+  "type": "module",
+  "scripts": {
+    "dev:ui": "ng build --watch --configuration development",
+    "dev:electron": "npm run transpile:electron && electron .",
+    "transpile:electron": "tsc --project src/electron/tsconfig.json",
+    "build": "ng build",
+    "dist:arm": "npm run transpile:electron && npm run build && electron-builder --mac --arm64"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^19.0.0-next.2",
+    "@angular/cdk": "^19.0.0-next.2",
+    "@angular/common": "^19.0.0-next.2",
+    "@angular/compiler": "^19.0.0-next.2",
+    "@angular/core": "^19.0.0-next.2",
+    "@angular/forms": "^19.0.0-next.2",
+    "@angular/localize": "^19.0.0-next.2",
+    "@angular/material": "^19.0.0-next.2",
+    "@angular/material-moment-adapter": "^19.0.0-next.2",
+    "@angular/platform-browser": "^19.0.0-next.2",
+    "@angular/platform-browser-dynamic": "^19.0.0-next.2",
+    "@angular/router": "^19.0.0-next.2",
+    "moment": "^2.18.1",
+    "rxjs": "~7.4.0",
+    "swagger-ui": "^5.17.14",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^19.0.0-next.2",
+    "@angular/cli": "^19.0.0-next.2",
+    "@angular/compiler-cli": "^19.0.0-next.2",
+    "@types/jasmine": "~3.10.0",
+    "@types/swagger-ui": "^3.52.4",
+    "chokidar": "^3.6.0",
+    "electron": "^32.1.2",
+    "electron-builder": "^25.1.7",
+    "jasmine-core": "~3.10.0",
+    "karma": "~6.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "~1.7.0",
+    "typescript": "~5.5.2"
+  }
+}

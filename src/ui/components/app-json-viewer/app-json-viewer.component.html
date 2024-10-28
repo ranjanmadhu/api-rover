@@ -1,0 +1,36 @@
+<div class="json-viewer">
+    <ng-container *ngTemplateOutlet="jsonTemplate; context: { $implicit: data, level: 0 }">
+    </ng-container>
+</div>
+
+<ng-template #jsonTemplate let-obj let-level="level">
+    <div>
+        <span class="bracket">{{'{'}}</span>
+        <div *ngFor="let item of objectToArray(obj); let last = last" [class.indent]="true">
+            <span class="key">"{{item.key}}"</span>
+            <span class="colon">: </span>
+            <ng-container [ngSwitch]="getValueType(item.value)">
+                <!-- Nested object -->
+                <ng-container *ngSwitchCase="'object'">
+                    <ng-container
+                        *ngTemplateOutlet="jsonTemplate; context: { $implicit: item.value, level: level + 1 }">
+                    </ng-container>
+                </ng-container>
+
+                <!-- String -->
+                <span *ngSwitchCase="'string'" class="string">"{{item.value}}"</span>
+
+                <!-- Number -->
+                <span *ngSwitchCase="'number'" class="number">{{item.value}}</span>
+
+                <!-- Boolean -->
+                <span *ngSwitchCase="'boolean'" class="boolean">{{item.value}}</span>
+
+                <!-- Null -->
+                <span *ngSwitchCase="'null'" class="null">null</span>
+            </ng-container>
+            <span class="comma" *ngIf="!last">,</span>
+        </div>
+        <span class="bracket">&#125;</span>
+    </div>
+</ng-template>
