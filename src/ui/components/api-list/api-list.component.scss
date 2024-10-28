@@ -1,0 +1,21 @@
+.api-list-container {
+    display: flex;
+    flex-direction: row;
+
+    .api-list {
+        flex-grow: 100px;
+
+        .api-item{
+            cursor: pointer;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            &:hover {
+                background-color: #f9f9f9;
+            }
+        }
+    }
+
+    .swagger-ui {
+        flex-grow: 1;
+    }
+}
