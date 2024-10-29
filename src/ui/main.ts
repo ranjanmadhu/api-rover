@@ -3,6 +3,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { ApiListComponent } from './components/api-list/api-list.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
+
 @Component({
   selector: 'electron-app',
   template: ` <app-api-list></app-api-list>`,

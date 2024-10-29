@@ -1,3 +1,7 @@
+.toolbar-button {
+    margin-right: 16px;
+}
+
 .api-list-container {
     display: flex;
     flex-direction: row;
@@ -5,17 +9,41 @@
     .api-list {
         flex-grow: 100px;
 
-        .api-item{
+        .api-item {
             cursor: pointer;
             padding: 10px;
             border-bottom: 1px solid #ccc;
+
             &:hover {
                 background-color: #f9f9f9;
             }
+
+            .item-container{
+                display: flex;
+                flex-direction: column;
+                .title{
+                    font-size: 16px;
+                }
+    
+                .subtitle {
+                    font-size: 12px;
+                    color: #666;
+                }
+            }            
         }
     }
 
     .swagger-ui {
         flex-grow: 1;
     }
+}
+
+.no-api {
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
 }

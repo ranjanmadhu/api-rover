@@ -3,16 +3,35 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span>API Documentation</span>
+  <span class="spacer"></span>
+  <button (click)="startAPIScan()" mat-stroked-button class="toolbar-button">Start API Scan</button>
+  @if(apiSpecService.apiSpecs().length > 0){
+  <button (click)="export()" mat-stroked-button class="toolbar-button">Export</button>
+  }
 </mat-toolbar>
 <div class="api-list-container">
+  @if(apiSpecService.apiSpecs().length > 0){
   <div class="api-list">
     <mat-list role="list">
-      @for (item of specs; track item) {
-      <mat-list-item role="listitem" class="api-item" (click)="updateSelectedAPI(item)" > {{ item.info.title }}</mat-list-item>
+      @for (item of apiSpecService.apiSpecs(); track item) {
+      <mat-list-item role="listitem" class="api-item" (click)="updateSelectedAPI(item.openApiSpec)">
+        <div class="item-container">
+          <span class="title">{{ item.title }}</span>
+          <span class="subtitle">{{ item.path }} ({{ item.count }})</span>
+        </div>       
+      </mat-list-item>
       }
     </mat-list>
   </div>
   <div class="swagger-ui">
+    @if(selectedSpec){
     <app-swagger-ui [spec]="selectedSpec"></app-swagger-ui>
+    }
   </div>
+  }@else{
+  <div class="no-api">
+    <p>No API Spec Found</p>
+  </div>
+  }
+
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiSpecService } from '../../services/api-spec.service';
 import { SwaggerUIComponent } from '../swagger-ui/swagger-ui.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,17 +19,20 @@ import { MatListModule } from '@angular/material/list';
   templateUrl: './api-list.component.html',
   styleUrl: './api-list.component.scss',
 })
-export class ApiListComponent implements OnInit {
-  specs: Array<any> = [];
+export class ApiListComponent {
   selectedSpec = null;
-  constructor(private apiSpecService: ApiSpecService) { }
-  ngOnInit(): void {
-    this.specs = this.apiSpecService.getSpecs();
-    this.selectedSpec = this.specs[0];
-  }
+
+  constructor(public apiSpecService: ApiSpecService) { }
 
   updateSelectedAPI = (spec: any) => {
-    console.log(spec);
     this.selectedSpec = spec;
+  }
+
+  startAPIScan = async () => {
+    await window.electron.ipcRenderer.invoke('start-api-scan', { ui: 'https://4innovation-impl.cms.gov/auth/login', api: 'https://4innovation-impl-api.cms.gov' });
+  }
+
+  export = () => {
+    this.apiSpecService.exportSpecsToJson();
   }
 }

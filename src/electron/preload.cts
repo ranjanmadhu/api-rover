@@ -9,4 +9,8 @@ electron.contextBridge.exposeInMainWorld('electron', {
         return () => electron.ipcRenderer.off('from-main', callBack);
     },
     getData: () => electron.ipcRenderer.invoke('get-data'),
+    ipcRenderer: {
+        invoke: electron.ipcRenderer.invoke,
+        send: electron.ipcRenderer.send
+    }
 } satisfies Window['electron']);
